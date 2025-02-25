@@ -1,0 +1,148 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img:nth-child(1){
+animation: move 4s   infinite   linear;
+animation-delay: 2s;
+
+
+}
+
+
+img:nth-child(2){
+    animation: move 4s   infinite   linear;
+animation-delay: 0.4s;
+
+    
+}
+
+img:nth-child(3){
+    animation: move 4s   infinite   linear;
+animation-delay: 0.4s;
+
+    
+}
+
+img:nth-child(4){
+    animation: move 4s   infinite   linear;
+
+animation-delay: 1.6s;
+    
+}
+
+img:nth-child(5){
+    animation: move 4s   infinite   linear;
+animation-delay: 2.3s;
+
+    
+}
+
+img:nth-child(6){
+    animation: move 4s   infinite   linear ;
+animation-delay: 3.2s;
+
+    
+}
+
+img:nth-child(7){
+    animation: move 4s   infinite   linear;
+animation-delay: 0.4s;
+
+    
+}
+
+img:nth-child(8){
+    animation: move 4s infinite   linear;
+animation-delay: 0s;
+
+    
+}
+
+@keyframes move {
+    from{
+        top:0;
+
+    }
+    to{
+top:100%;
+
+    }
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.custom-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #666;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.custom-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#rememberMe:checked + .custom-checkbox {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+#rememberMe:checked + .custom-checkbox::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    line-height: 1;
+}
+
+/* إبقاء أنيميشن الأوراق كما هي */
+img:nth-child(1){ animation: move 4s infinite linear 2s; }
+img:nth-child(2){ animation: move 4s infinite linear 0.4s; }
+img:nth-child(3){ animation: move 4s infinite linear 0.4s; }
+img:nth-child(4){ animation: move 4s infinite linear 1.6s; }
+img:nth-child(5){ animation: move 4s infinite linear 2.3s; }
+img:nth-child(6){ animation: move 4s infinite linear 3.2s; }
+img:nth-child(7){ animation: move 4s infinite linear 0.4s; }
+img:nth-child(8){ animation: move 4s infinite linear 0s; }
+
+@keyframes move {
+    from { top: 0; }
+    to { top: 100%; }
+}
+
+/* إضافة حدود للتحقق من التطابق */
+.border-green-500 {
+    border: 2px solid #22c55e;
+}
+
+.border-red-500 {
+    border: 2px solid #ef4444;
+}
+
+/* تنسيق أيقونات التحقق */
+#lengthCheck,
+#uppercaseCheck,
+#specialCharCheck,
+#numberCheck {
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}

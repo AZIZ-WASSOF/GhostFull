@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GhostFull-Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .check-icon { transition: all 0.3s ease; }
+    .valid { color: #22c55e; }
+    .invalid { color: #ef4444; }
+    .match-border { border: 2px solid #22c55e; }
+    .mismatch-border { border: 2px solid #ef4444; }
+  </style>
+</head>
+<body class="h-screen w-screen flex justify-center items-center overflow-hidden bg-[url(images/background.png)] bg-center bg-cover">
+
+  <!-- Login Container -->
+  <div id="loginContainer" class="containerr h-[28rem] w-96 backdrop-blur-md bg-white/30 grid grid-cols-1 grid-row-4 p-7 gap-y-4 rounded-md">
+    <h1 class="text-3xl font-extrabold text-center">AZ Online Service</h1>
+    <input type="text" class="bg-white rounded-md px-3" placeholder="Username">
+    <input type="password" class="bg-white rounded-md px-3" placeholder="Password">
+    
+    <div class="flex items-center">
+      <input type="checkbox" id="rememberMe" class="hidden">
+      <label for="rememberMe" class="custom-checkbox"></label>
+      <span class="text-sm text-gray-600 ml-2">Remember me</span>
+    </div>
+
+    <button onclick="window.location.href='main.html'" class="bg-[rgb(255,161,99)] text-white rounded-md transition-all duration-300 hover:bg-[rgb(255,141,79)] hover:scale-105">
+      Log in
+    </button>
+    
+    <a href="#" id="showForgotPassword" class="text-center text-sm text-black-600 hover:text-black-800">Forgot Password?</a>
+    <a href="#" id="showSignup" class="text-center text-sm text-black-600 hover:text-black-800">Sign up</a>
+  </div>
+
+  <!-- Signup Container -->
+  <div id="signupContainer" class="containerr h-[40rem] w-96 backdrop-blur-md bg-white/30 grid grid-cols-1 p-7 gap-y-4 rounded-md hidden">
+    <h1 class="text-3xl font-extrabold text-center">Create Account</h1>
+    <input type="text" class="bg-white rounded-md px-3" placeholder="Username">
+    <input type="email" class="bg-white rounded-md px-3" placeholder="Email">
+    
+    <!-- Password Input & Requirements -->
+    <input type="password" 
+           id="password" 
+           class="bg-white rounded-md px-3" 
+           placeholder="Password"
+           onkeyup="validatePassword(this.value)">
+    
+    <div class="text-sm text-gray-600 mt-2">
+      <div class="flex items-center mb-1">
+        <span id="lengthCheck" class="check-icon mr-2">❌</span>
+        8-12 characters
+      </div>
+      <div class="flex items-center mb-1">
+        <span id="uppercaseCheck" class="check-icon mr-2">❌</span>
+        At least one uppercase letter
+      </div>
+      <div class="flex items-center mb-1">
+        <span id="specialCharCheck" class="check-icon mr-2">❌</span>
+        At least one special character (!@#$%^&*)
+      </div>
+      <div class="flex items-center">
+        <span id="numberCheck" class="check-icon mr-2">❌</span>
+        At least one number
+      </div>
+    </div>
+
+    <input type="password" 
+           id="confirmPassword" 
+           class="bg-white rounded-md px-3" 
+           placeholder="Confirm Password"
+           disabled
+           onkeyup="checkPasswordsMatch()">
+
+    <button id="signupBtn" class="bg-[rgb(255,161,99)] text-white rounded-md transition-all duration-300 hover:bg-[rgb(255,141,79)] hover:scale-105" disabled>
+      Sign Up
+    </button>
+    
+    <!---<a href="#" id="showLogin" class="text-center text-sm text-black-600 hover:text-black-800">Already have an account? Log in</a>-->
+    <a href="#" id="showLogin" class="text-center text-sm text-black-600 hover:text-black-800">Already have an account? <span style="color: blue;">Log in</span></a>
+  </div>
+
+  <!-- Forgot Password Container -->
+  <div id="forgotPasswordContainer" class="containerr h-72 w-96 backdrop-blur-md bg-white/30 grid grid-cols-1 p-7 gap-y-4 rounded-md hidden">
+    <h1 class="text-3xl font-extrabold text-center">Reset Password</h1>
+    <input type="email" id="recoveryEmail" class="bg-white rounded-md px-3" placeholder="Enter your email">
+    <button id="sendCodeBtn" class="bg-[rgb(255,161,99)] text-white rounded-md transition-all duration-300 hover:bg-[rgb(255,141,79)] hover:scale-105">
+      Send Code
+    </button>
+    <a href="#" id="backToLogin" class="text-center text-sm text-black-600 hover:text-black-800">Back to Login</a>
+  </div>
+
+  <!-- Animated Leaves -->
+  <img src="images/leave1.png" alt="" class="absolute top-0 left-0">
+  <img src="images/leave2.png" alt="" class="absolute top-0 left-20">
+  <img src="images/leave1.png" alt="" class="absolute top-0 right-0">
+  <img src="images/leave2.png" alt="" class="absolute top-0 right-96">
+  <img src="images/leave1.png" alt="" class="absolute top-0 left-96">
+  <img src="images/leave2.png" alt="" class="absolute top-0 right-80">
+  <img src="images/leave1.png" alt="" class="absolute top-0">
+
+  <script>
+    // Password validation logic
+    let passwordValidations = {
+      length: false,
+      uppercase: false,
+      specialChar: false,
+      number: false
+    };
+
+    function validatePassword(password) {
+      passwordValidations.length = password.length >= 8 && password.length <= 12;
+      passwordValidations.uppercase = /[A-Z]/.test(password);
+      passwordValidations.specialChar = /[!@#$%^&*]/.test(password);
+      passwordValidations.number = /\d/.test(password);
+
+      updateValidationIcons();
+      toggleConfirmPasswordField();
+    }
+
+    function updateValidationIcons() {
+      document.getElementById('lengthCheck').textContent = passwordValidations.length ? '✅' : '❌';
+      document.getElementById('uppercaseCheck').textContent = passwordValidations.uppercase ? '✅' : '❌';
+      document.getElementById('specialCharCheck').textContent = passwordValidations.specialChar ? '✅' : '❌';
+      document.getElementById('numberCheck').textContent = passwordValidations.number ? '✅' : '❌';
+    }
+
+    function toggleConfirmPasswordField() {
+      const allValid = Object.values(passwordValidations).every(v => v);
+      document.getElementById('confirmPassword').disabled = !allValid;
+    }
+
+    function checkPasswordsMatch() {
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      const match = password === confirm;
+      
+      document.getElementById('confirmPassword').classList.toggle('match-border', match);
+      document.getElementById('confirmPassword').classList.toggle('mismatch-border', !match);
+      document.getElementById('signupBtn').disabled = !match;
+    }
+
+    // Show/hide containers
+    function showContainer(containerId) {
+      document.querySelectorAll('.containerr').forEach(container => {
+        container.classList.add('hidden');
+      });
+      document.getElementById(containerId).classList.remove('hidden');
+    }
+
+    // Event listeners
+    document.getElementById('showSignup').addEventListener('click', (e) => {
+      e.preventDefault();
+      showContainer('signupContainer');
+    });
+
+    document.getElementById('showLogin').addEventListener('click', (e) => {
+      e.preventDefault();
+      showContainer('loginContainer');
+    });
+
+    document.getElementById('showForgotPassword').addEventListener('click', (e) => {
+      e.preventDefault();
+      showContainer('forgotPasswordContainer');
+    });
+
+    document.getElementById('backToLogin').addEventListener('click', (e) => {
+      e.preventDefault();
+      showContainer('loginContainer');
+    });
+
+    // Send code functionality
+    document.getElementById('sendCodeBtn').addEventListener('click', () => {
+      const email = document.getElementById('recoveryEmail').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(emailRegex.test(email)) {
+        alert('Verification code has been sent to ' + email);
+      } else {
+        alert('Please enter a valid email address');
+      }
+    });
+  </script>
+</body>
+</html>
