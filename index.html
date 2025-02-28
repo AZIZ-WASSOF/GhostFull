@@ -59,6 +59,13 @@
   <!-- Top Navigation Bar with increased height (80px) -->
   <nav class="bg-gradient-to-r from-blue-600 to-blue-500 text-white h-20 fixed w-full z-50 shadow-xl flex justify-between items-center px-4">
     <div class="flex items-center space-x-4">
+      <!-- زر الهمبرغر، يظهر فقط على الشاشات الصغيرة -->
+      <button id="hamburger" class="sm:hidden focus:outline-none">
+        <!-- أيقونة همبرغر بسيطة -->
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
       <h1 class="text-2xl font-bold tracking-tight">Dashboard</h1>
     </div>
     <div class="flex items-center space-x-6">
@@ -123,7 +130,7 @@
         
   <div class="flex pt-20">
     <!-- Sidebar (positioned on the left, starting exactly under the navbar) text-xl-->
-    <aside class="hidden sm:block w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">
+    <aside id="sidebar" class="hidden sm:block w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">
       <nav>
         <ul class="space-y-2">
           <!-- Proxy menu with submenu -->
@@ -251,7 +258,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-grow p-8 ml-0 sm:ml-64">
+    <main class="flex-grow p-8 ml-0 sm:ml-64 pt-24">
       <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <!-- Monthly Usage Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
@@ -455,6 +462,15 @@
         profileModal.classList.add("hidden");
       }
     });
+
+    <!-- كود JavaScript لتبديل ظهور الشريط الجانبي -->
+
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+
+  hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("hidden");
+  });
 
   </script>
 </body>
