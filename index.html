@@ -59,17 +59,15 @@
   <!-- Top Navigation Bar with increased height (80px) -->
   <nav class="bg-gradient-to-r from-blue-600 to-blue-500 text-white h-20 fixed w-full z-50 shadow-xl flex justify-between items-center px-4">
     <div class="flex items-center space-x-4">
-      <!-- زر الهمبرغر، يظهر فقط على الشاشات الصغيرة -->
       <button id="hamburger" class="sm:hidden focus:outline-none">
-        <!-- أيقونة همبرغر بسيطة -->
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
       <h1 class="text-2xl font-bold tracking-tight">Dashboard</h1>
     </div>
-    <div class="hidden lg:flex items-center space-x-6">
-      <div class="bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm">
+    <div class="flex items-center space-x-6">
+      <div class="hidden lg:block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm">
         <span class="font-medium">Balance: $0.00</span>
       </div>
       <div class="relative">
@@ -127,10 +125,10 @@
     </div>
   </div>
 
-        
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>        
   <div class="flex pt-20">
     <!-- Sidebar (positioned on the left, starting exactly under the navbar) text-xl-->
-    <aside id="sidebar" class="hidden sm:block w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">
+    <aside id="sidebar" class="hidden sm:block w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">  
       <nav>
         <ul class="space-y-2">
           <!-- Proxy menu with submenu -->
@@ -467,9 +465,18 @@
 
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
+  const sidebarOverlay = document.getElementById("sidebarOverlay");
 
+  // عند النقر على زر الهمبرغر، نقوم بإظهار الشريط الجانبي والـ Overlay
   hamburger.addEventListener("click", () => {
-    sidebar.classList.toggle("hidden");
+    sidebar.classList.toggle("-translate-x-full");
+    sidebarOverlay.classList.toggle("hidden");
+  });
+
+  // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
+  sidebarOverlay.addEventListener("click", () => {
+    sidebar.classList.add("-translate-x-full");
+    sidebarOverlay.classList.add("hidden");
   });
 
   </script>
