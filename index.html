@@ -123,7 +123,7 @@
         
   <div class="flex pt-20">
     <!-- Sidebar (positioned on the left, starting exactly under the navbar) text-xl-->
-    <aside class="w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">
+    <aside class="hidden sm:block w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white fixed top-20 left-0 h-[calc(100vh-80px)] shadow-2xl p-5">
       <nav>
         <ul class="space-y-2">
           <!-- Proxy menu with submenu -->
@@ -251,7 +251,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-grow p-8 ml-72">
+    <main class="flex-grow p-8 ml-0 sm:ml-64">
       <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         <!-- Monthly Usage Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
