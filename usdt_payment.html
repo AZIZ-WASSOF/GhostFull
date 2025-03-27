@@ -40,6 +40,35 @@
     aside nav ul li button:hover {
       transform: translateY(-3px);
     }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 640px) {
+      #profileMenu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+        z-index: 60;
+      }
+      #sidebar {
+        z-index: 70;
+      }
+      #sidebarOverlay {
+        z-index: 65;
+      }
+      .main-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -64,7 +93,7 @@
             <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
           </div>
         </button>
-        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right">
+        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right sm:right-0 left-0 sm:left-auto">
           <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all">
             <i class="fi fi-ss-user-pen mr-5 text-blue-500"></i>
             <span class="font-medium" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
