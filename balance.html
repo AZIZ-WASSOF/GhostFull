@@ -67,6 +67,11 @@
       }
       #sidebar {
         z-index: 70;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      #sidebar.active {
+        transform: translateX(0);
       }
       #sidebarOverlay {
         z-index: 65;
@@ -74,6 +79,12 @@
       .main-content {
         margin-left: 0 !important;
         margin-right: 0 !important;
+      }
+      [dir="rtl"] #sidebar {
+        transform: translateX(100%);
+      }
+      [dir="rtl"] #sidebar.active {
+        transform: translateX(0);
       }
     }
   </style>
@@ -470,18 +481,14 @@
 
   // عند النقر على زر الهمبرغر، نقوم بإظهار الشريط الجانبي والـ Overlay
         hamburger.addEventListener("click", () => {
-          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
-            sidebar.classList.toggle("-translate-x-full");
-            sidebarOverlay.classList.toggle("hidden");
-          }
+          sidebar.classList.toggle("active");
+          sidebarOverlay.classList.toggle("hidden");
         });
 
   // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
         sidebarOverlay.addEventListener("click", () => {
-          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
-            sidebar.classList.add("-translate-x-full");
-            sidebarOverlay.classList.add("hidden");
-          }
+          sidebar.classList.remove("active");
+          sidebarOverlay.classList.add("hidden");
         });
 
         // Settings Modal Functionality
@@ -537,6 +544,11 @@
           sidebarElement.style.right = '0';
           mainContent.classList.remove('sm:ml-64');
           mainContent.classList.add('sm:mr-64');
+        } else {
+          sidebarElement.style.left = '0';
+          sidebarElement.style.right = 'auto';
+          mainContent.classList.remove('sm:mr-64');
+          mainContent.classList.add('sm:ml-64');
         }
         
         updatePageLanguage(savedLanguage);
@@ -574,22 +586,6 @@
 
           // Close settings modal
           settingsModal.classList.add('hidden');
-        });
-
-        // تحديث وظيفة إضافة مستمع لتغيير حجم النافذة
-        hamburger.addEventListener("click", () => {
-          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
-            sidebar.classList.toggle("-translate-x-full");
-            sidebarOverlay.classList.toggle("hidden");
-          }
-        });
-
-        // تحديث وظيفة إغلاق الشريط الجانبي
-        sidebarOverlay.addEventListener("click", () => {
-          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
-            sidebar.classList.add("-translate-x-full");
-            sidebarOverlay.classList.add("hidden");
-          }
         });
 
         // إضافة مستمع لتغيير حجم النافذة
