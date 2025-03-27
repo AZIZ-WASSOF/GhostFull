@@ -95,6 +95,10 @@
         z-index: 70;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        height: calc(100vh - 80px);
       }
       #sidebar.active {
         transform: translateX(0);
@@ -108,6 +112,8 @@
       }
       [dir="rtl"] #sidebar {
         transform: translateX(100%);
+        left: auto;
+        right: 0;
       }
       [dir="rtl"] #sidebar.active {
         transform: translateX(0);
