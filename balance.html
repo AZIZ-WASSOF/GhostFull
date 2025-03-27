@@ -53,6 +53,29 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+    /* Mobile Responsive Fixes */
+    @media (max-width: 640px) {
+      #profileMenu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+        z-index: 60;
+      }
+      #sidebar {
+        z-index: 70;
+      }
+      #sidebarOverlay {
+        z-index: 65;
+      }
+      .main-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -78,7 +101,7 @@
           </div>
         </button>
         <!-- 🔷 القائمة المنسدلة -->
-        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right">
+        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right sm:right-0 left-0 sm:left-auto">
           <!-- زر الملف الشخصي -->
           <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all w-full">
             <i class="fi fi-ss-user-pen mr-5 text-blue-500"></i>
@@ -178,7 +201,7 @@
 
   <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>      
     <!-- Sidebar (positioned on the left, starting exactly under the navbar) text-xl-->
-    <aside id="sidebar" class="transform -translate-x-full sm:translate-x-0 transition-transform duration-300 fixed top-20 h-[calc(100vh-80px)] w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white shadow-2xl p-5 z-50" style="left: 0;">  
+    <aside id="sidebar" class="transform -translate-x-full sm:translate-x-0 transition-transform duration-300 fixed top-20 h-[calc(100vh-80px)] w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white shadow-2xl p-5 z-50">  
       <nav>
         <ul class="space-y-2">
           <!-- Proxy menu with submenu -->
@@ -447,14 +470,18 @@
 
   // عند النقر على زر الهمبرغر، نقوم بإظهار الشريط الجانبي والـ Overlay
         hamburger.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
-        sidebarOverlay.classList.toggle("hidden");
+          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
+            sidebar.classList.toggle("-translate-x-full");
+            sidebarOverlay.classList.toggle("hidden");
+          }
         });
 
   // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
         sidebarOverlay.addEventListener("click", () => {
-        sidebar.classList.add("-translate-x-full");
-        sidebarOverlay.classList.add("hidden");
+          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
+            sidebar.classList.add("-translate-x-full");
+            sidebarOverlay.classList.add("hidden");
+          }
         });
 
         // Settings Modal Functionality
@@ -547,6 +574,47 @@
 
           // Close settings modal
           settingsModal.classList.add('hidden');
+        });
+
+        // تحديث وظيفة إضافة مستمع لتغيير حجم النافذة
+        hamburger.addEventListener("click", () => {
+          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
+            sidebar.classList.toggle("-translate-x-full");
+            sidebarOverlay.classList.toggle("hidden");
+          }
+        });
+
+        // تحديث وظيفة إغلاق الشريط الجانبي
+        sidebarOverlay.addEventListener("click", () => {
+          if (window.innerWidth < 640) { // للشاشات الصغيرة فقط
+            sidebar.classList.add("-translate-x-full");
+            sidebarOverlay.classList.add("hidden");
+          }
+        });
+
+        // إضافة مستمع لتغيير حجم النافذة
+        window.addEventListener('resize', () => {
+          const currentLanguage = localStorage.getItem('language') || 'en';
+          if (window.innerWidth >= 640) { // للشاشات الكبيرة
+            sidebar.classList.remove("-translate-x-full");
+            sidebarOverlay.classList.add("hidden");
+            
+            // تحديث موضع الشريط الجانبي بناءً على اللغة
+            if (currentLanguage === 'ar') {
+              sidebar.style.left = 'auto';
+              sidebar.style.right = '0';
+              mainContent.classList.remove('sm:ml-64');
+              mainContent.classList.add('sm:mr-64');
+            } else {
+              sidebar.style.left = '0';
+              sidebar.style.right = 'auto';
+              mainContent.classList.remove('sm:mr-64');
+              mainContent.classList.add('sm:ml-64');
+            }
+          } else { // للشاشات الصغيرة
+            sidebar.classList.add("-translate-x-full");
+            sidebarOverlay.classList.add("hidden");
+          }
         });
 
         // Add updatePageLanguage function
