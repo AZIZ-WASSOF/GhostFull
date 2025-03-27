@@ -17,6 +17,8 @@
   
   <!-- Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Cairo Font for Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     /* Apply Inter font*/
     body {
@@ -53,9 +55,34 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+    /* RTL Support */
+    [dir="rtl"] .ml-0.sm\:ml-64 {
+      margin-left: 0;
+      margin-right: 16rem;
+    }
+    [dir="rtl"] .space-x-4 > * + * {
+      margin-left: 0;
+      margin-right: 1rem;
+    }
+    [dir="rtl"] .space-x-6 > * + * {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+    [dir="rtl"] .space-x-5 > * + * {
+      margin-left: 0;
+      margin-right: 1.25rem;
+    }
+    [dir="rtl"] .mr-5 {
+      margin-right: 0;
+      margin-left: 1.25rem;
+    }
+    [dir="rtl"] .ml-5 {
+      margin-left: 0;
+      margin-right: 1.25rem;
+    }
   </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50" dir="ltr">
   <!-- Top Navigation Bar with increased height (80px) -->
   <nav class="bg-gradient-to-r from-blue-600 to-blue-500 text-white h-20 fixed w-full z-50 shadow-xl flex justify-between items-center px-4">
     <div class="flex items-center space-x-4">
@@ -64,11 +91,11 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
-      <h1 class="text-2xl font-bold tracking-tight">Dashboard</h1>
+      <h1 class="text-2xl font-bold tracking-tight" data-en="Dashboard" data-ar="لوحة التحكم">Dashboard</h1>
     </div>
     <div class="flex items-center space-x-6">
       <div class="hidden lg:block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm">
-        <span class="font-medium">Balance: $0.00</span>
+        <span class="font-medium" data-en="Balance: $0.00" data-ar="الرصيد: $0.00">Balance: $0.00</span>
       </div>
       <div class="relative">
         <button id="profileBtn" class="flex items-center space-x-2 group">
@@ -78,22 +105,22 @@
           </div>
         </button>
         <!-- 🔷 القائمة المنسدلة -->
-        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right">
+        <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right" style="right: 0;">
           <!-- زر الملف الشخصي -->
-          <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all w-full">
+          <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all">
             <i class="fi fi-ss-user-pen mr-5 text-blue-500"></i>
-            <span class="font-medium">Profile</span>
+            <span class="font-medium" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
           </button>
           <!-- زر الإعدادات -->
           <a href="#" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all">
             <i class="fi fi-ss-settings mr-5 text-blue-500"></i>
-            <span class="font-medium">Settings</span>
+            <span class="font-medium" data-en="Settings" data-ar="الإعدادات">Settings</span>
           </a>
           <div class="border-t my-2"></div>
           <!-- زر تسجيل الخروج -->
           <a href="login.html" class="flex items-center px-5 py-3 hover:bg-gray-50/90 text-red-500 transition-all">
             <i class="fi fi-ss-address-card mr-5 text-red-500"></i>
-            <span class="font-medium">Log out</span>
+            <span class="font-medium" data-en="Log out" data-ar="تسجيل الخروج">Log out</span>
           </a>
         </div>
       </div>
@@ -113,9 +140,9 @@
 
       <!-- 🔹 معلومات المستخدم -->
       <div class="text-center space-y-8">
-       <h2 class="text-2xl font-bold text-gray-800">User Profile</h2>
-       <p class="text-gray-700 mt-3 text-lg"><strong>Email:</strong> <span id="useremail">example@example.com</span></p>
-       <p class="text-gray-700 mt-3 text-lg"><strong>Password:</strong> <span id="userpassword">********</span></p>
+       <h2 class="text-2xl font-bold text-gray-800" data-en="User Profile" data-ar="الملف الشخصي للمستخدم">User Profile</h2>
+       <p class="text-gray-700 mt-3 text-lg"><strong data-en="Email:" data-ar="البريد الإلكتروني:">Email:</strong> <span id="useremail">example@example.com</span></p>
+       <p class="text-gray-700 mt-3 text-lg"><strong data-en="Password:" data-ar="كلمة المرور:">Password:</strong> <span id="userpassword">********</span></p>
       </div>
       <!-- 🔹 زر تسجيل الخروج -->
       <!--<a href="login.html" class="block mt-6 bg-red-500 text-white px-6 py-3 rounded-xl 
@@ -136,102 +163,87 @@
             <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
               <div class="flex items-center space-x-5">
                 <i class="fi fi-rr-shield-check text-xl"></i>
-                <span class="font-medium">Proxy</span>
+                <span class="font-medium" data-en="Proxy" data-ar="البروكسي">Proxy</span>
               </div>
               <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
             </button>
             <ul class="submenu pl-9">
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Static Residential" data-ar="سكني ثابت">
                   Static Residential
                 </a>
               </li>
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Modem Rotation" data-ar="تدوير المودم">
                   Modem Rotation
                 </a>
               </li>
-              <!--<li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                  History
-                </a>
-              </li>-->
             </ul>
           </li>
 
-          <!-- Temp Number menu with submenu and connection icon -->
+          <!-- VPN menu -->
           <li class="menu-item">
             <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
               <div class="flex items-center space-x-5">
-                <!-- تم استبدال أيقونة الهاتف بأيقونة الواي فاي للدلالة على الاتصال -->
                 <i class="fi fi-tr-vpn-globe text-xl"></i>
-                <span class="font-medium">VPN</span>
+                <span class="font-medium" data-en="VPN" data-ar="الشبكة الافتراضية">VPN</span>
               </div>
               <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
             </button>
             <ul class="submenu pl-9">
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Mysterium VPN" data-ar="مستروم VPN">
                   Mysterium VPN
                 </a>
-              </li><!---<i class="fi fi-tr-vpn-globe"></i>
-              <i class="fi fi-rr-vpn-globe"></i>
-              <i class="fi fi-ss-vpn-globe"></i>-->
+              </li>
             </ul>
           </li>
 
-
-          <!-- Temp Number menu with submenu and connection icon -->
+          <!-- Temp Number menu -->
           <li class="menu-item">
             <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
               <div class="flex items-center space-x-5">
-                <!-- تم استبدال أيقونة الهاتف بأيقونة الواي فاي للدلالة على الاتصال -->
                 <i class="fi fi-rr-phone-call text-xl"></i>
-                <span class="font-medium">Temp Number</span>
+                <span class="font-medium" data-en="Temp Number" data-ar="رقم مؤقت">Temp Number</span>
               </div>
               <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
             </button>
             <ul class="submenu pl-9">
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Numbers for 5 min" data-ar="أرقام لمدة 5 دقائق">
                   Numbers for 5 min
                 </a>
               </li>
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Numbers for 15 min" data-ar="أرقام لمدة 15 دقيقة">
                   Numbers for 15 min
                 </a>
               </li>
-              <!--<li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                  History
-                </a>
-              </li>-->
             </ul>
           </li>
 
-          <!-- Ready-made Accounts menu with submenu -->
+          <!-- Ready Accounts menu -->
           <li class="menu-item">
             <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
               <div class="flex items-center space-x-5">
                 <i class="fi fi-rr-envelope text-xl"></i>
-                <span class="font-medium">Ready Accounts</span>
+                <span class="font-medium" data-en="Ready Accounts" data-ar="حسابات جاهزة">Ready Accounts</span>
               </div>
               <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
             </button>
             <ul class="submenu pl-9">
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Gmail" data-ar="جيميل">
                   Gmail
                 </a>
               </li>
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Outlook" data-ar="أوتلوك">
                   Outlook
                 </a>
               </li>
               <li>
-                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
+                <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all" data-en="Hotmail" data-ar="هوت ميل">
                   Hotmail
                 </a>
               </li>
@@ -242,13 +254,13 @@
           <li>
             <a href="#" class="flex items-center space-x-5 p-3.5 hover:bg-white/10 rounded-xl transition-all">
               <i class="fi fi-ss-chart-histogram text-xl"></i>
-              <span class="font-medium">Analytics</span>
+              <span class="font-medium" data-en="Analytics" data-ar="التحليلات">Analytics</span>
             </a>
           </li>
           <li>
             <a href="#" class="flex items-center space-x-5 p-3.5 hover:bg-white/10 rounded-xl transition-all">
               <i class="fi fi-rr-box text-xl"></i>
-              <span class="font-medium">Orders</span>
+              <span class="font-medium" data-en="Orders" data-ar="الطلبات">Orders</span>
             </a>
           </li>
         </ul>
@@ -262,12 +274,12 @@
         <!-- Available Balance Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
           <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">Available Balance</h3>
+            <h3 class="text-lg font-semibold" data-en="Available Balance" data-ar="الرصيد المتاح">Available Balance</h3>
             <i class="fi fi-ss-wallet text-green-500 sm:text-3xl text-2xl mt-2 sm:mt-0"></i>
           </div>
           <div class="text-center py-6">
             <p class="text-3xl font-bold text-blue-600">$0.00</p>
-            <button onclick="window.location.href='balance.html'" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-all">
+            <button onclick="window.location.href='balance.html'" class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-all" data-en="Top Up Balance" data-ar="شحن الرصيد">
               Top Up Balance
             </button>
           </div>
@@ -275,12 +287,14 @@
         <!-- Monthly Usage Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
           <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">About us</h3>
+            <h3 class="text-lg font-semibold" data-en="About us" data-ar="من نحن">About us</h3>
             <i class="fi fi-rr-membership-vip text-blue-500 sm:text-3xl text-2xl mt-2 sm:mt-0"></i>
           </div>
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="text-gray-500">A team specializing in delivering top-quality digital services and remote work solutions with fast performance</span>
+              <span class="text-gray-500" data-en="A team specializing in delivering top-quality digital services and remote work solutions with fast performance" data-ar="فريق متخصص في تقديم خدمات رقمية عالية الجودة وحلول العمل عن بعد بأداء سريع">
+                A team specializing in delivering top-quality digital services and remote work solutions with fast performance
+              </span>
               <!--<span class="font-medium">12/50</span>-->
             </div>
           </div>
@@ -289,14 +303,16 @@
         <!-- Active Orders Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
           <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">Why Choose GhostFull?</h3>
+            <h3 class="text-lg font-semibold" data-en="Why Choose GhostFull?" data-ar="لماذا تختار GhostFull؟">Why Choose GhostFull?</h3>
             <i class="fi fi-rr-feedback-review text-yellow-500 sm:text-3xl text-2xl mt-2 sm:mt-0"></i>
           </div>
           <div class="space-y-4">
-              <div class="flex justify-between items-center">
-                <span class="text-gray-500">One of the best service providers, 24/7 technical support, fast response and reply, 24-hour service replacement guarantee after purchase, best according to customer rating</span>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-500" data-en="One of the best service providers, 24/7 technical support, fast response and reply, 24-hour service replacement guarantee after purchase, best according to customer rating" data-ar="من أفضل مزودي الخدمات، دعم فني على مدار الساعة، استجابة سريعة، ضمان استبدال الخدمة خلال 24 ساعة بعد الشراء، الأفضل حسب تقييم العملاء">
+                One of the best service providers, 24/7 technical support, fast response and reply, 24-hour service replacement guarantee after purchase, best according to customer rating
+              </span>
 
-              </div>
+            </div>
           </div>
         </div>
 
@@ -305,22 +321,22 @@
     <!-- Description Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
           <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">Support Time</h3>
+            <h3 class="text-lg font-semibold" data-en="Support Time" data-ar="وقت الدعم">Support Time</h3>
             <i class="fi fi-ss-headset text-orange-500 sm:text-3xl text-2xl mt-2 sm:mt-0"></i>
           </div>
-          <p class="text-gray-500 mb-4">
+          <p class="text-gray-500 mb-4" data-en="Please feel free to contact us via :" data-ar="يمكنك التواصل معنا عبر:">
             Please feel free to contact us via : 
           </p>
           <div class="space-y-4">
             <div class="flex flex-col space-y-2">
               <div class="flex justify-between items-center">
-                <span class="font-medium">Email:</span>
+                <span class="font-medium" data-en="Email:" data-ar="البريد الإلكتروني:">Email:</span>
                 <a href="mailto:az.company.sy@gmail.com" class="text-gray-500 hover:text-blue-500 transition">
                   az.company.sy@gmail.com
                 </a>
               </div>  
               <div class="flex justify-between items-center">
-                <span class="font-medium">Telegram:</span>
+                <span class="font-medium" data-en="Telegram:" data-ar="تيليجرام:">Telegram:</span>
                 <a href="https://t.me/AZ_Support1" class="text-gray-500 hover:text-blue-500 transition">
                   @AZ_Support1
                 </a>    
@@ -332,10 +348,10 @@
     <!-- Support & Contact Card -->
         <div class="card-hover bg-white rounded-2xl p-6 shadow-lg">
           <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold">Follow us</h3>
+            <h3 class="text-lg font-semibold" data-en="Follow us" data-ar="تابعنا">Follow us</h3>
             <i class="fi fi-rr-share text-red-500 sm:text-3xl text-2xl mt-2 sm:mt-0"></i>
           </div>
-          <p class="text-gray-500 mb-4">
+          <p class="text-gray-500 mb-4" data-en="Follow us on our social platforms to stay up to date with the latest updates and offers." data-ar="تابعنا على منصاتنا الاجتماعية للبقاء على اطلاع بأحدث التحديثات والعروض.">
             Follow us on our social platforms to stay up to date with the latest updates and offers.
           </p>
           
@@ -343,25 +359,25 @@
             <!-- Telegram -->
             <a href="https://t.me/AZ_Channel" target="_blank" class="flex items-center space-x-3 text-gray-700 hover:text-blue-500 transition">
               <i class="fi fi-brands-telegram text-2xl text-blue-500"></i>
-              <span class="font-medium">Telegram</span>
+              <span class="font-medium" data-en="Telegram" data-ar="تيليجرام">Telegram</span>
             </a>
         
             <!-- YouTube -->
             <a href="https://www.youtube.com/channel/YourChannel" target="_blank" class="flex items-center space-x-3 text-gray-700 hover:text-red-500 transition">
               <i class="fi fi-brands-youtube text-2xl text-red-500"></i>
-              <span class="font-medium">YouTube</span>
+              <span class="font-medium" data-en="YouTube" data-ar="يوتيوب">YouTube</span>
             </a>
         
             <!-- Instagram -->
             <a href="https://www.instagram.com/YourInstagram" target="_blank" class="flex items-center space-x-3 text-gray-700 hover:text-pink-500 transition">
               <i class="fi fi-brands-instagram text-2xl text-pink-500"></i>
-              <span class="font-medium">Instagram</span>
+              <span class="font-medium" data-en="Instagram" data-ar="انستغرام">Instagram</span>
             </a>
         
             <!-- Facebook -->
             <a href="https://www.facebook.com/YourFacebook" target="_blank" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700 transition">
               <i class="fi fi-brands-facebook text-2xl text-blue-700"></i>
-              <span class="font-medium">Facebook</span>
+              <span class="font-medium" data-en="Facebook" data-ar="فيسبوك">Facebook</span>
             </a>
           </div>
         </div>    
@@ -379,18 +395,18 @@
       </button>
       
       <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800">Settings</h2>
+        <h2 class="text-2xl font-bold text-gray-800" data-en="Settings" data-ar="الإعدادات">Settings</h2>
       </div>
 
       <div class="space-y-6">
         <!-- Change Password -->
         <div class="p-4 bg-gray-50 rounded-xl">
-          <h3 class="font-medium text-gray-700 mb-3">Change Password</h3>
+          <h3 class="font-medium text-gray-700 mb-3" data-en="Change Password" data-ar="تغيير كلمة المرور">Change Password</h3>
           <div class="space-y-3">
-            <input type="password" placeholder="Current Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <input type="password" placeholder="New Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <input type="password" placeholder="Confirm New Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            <input type="password" placeholder="Current Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="Current Password" data-ar-placeholder="كلمة المرور الحالية">
+            <input type="password" placeholder="New Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="New Password" data-ar-placeholder="كلمة المرور الجديدة">
+            <input type="password" placeholder="Confirm New Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="Confirm New Password" data-ar-placeholder="تأكيد كلمة المرور الجديدة">
+            <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors" data-en="Update Password" data-ar="تحديث كلمة المرور">
               Update Password
             </button>
           </div>
@@ -398,10 +414,10 @@
 
         <!-- Telegram Username -->
         <div class="p-4 bg-gray-50 rounded-xl">
-          <h3 class="font-medium text-gray-700 mb-3">Telegram Username</h3>
+          <h3 class="font-medium text-gray-700 mb-3" data-en="Telegram Username" data-ar="اسم المستخدم في تيليجرام">Telegram Username</h3>
           <div class="flex space-x-3">
-            <input type="text" placeholder="Enter your Telegram username" class="flex-1 p-2 rounded-lg border border-gray-300">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            <input type="text" placeholder="Enter your Telegram username" class="flex-1 p-2 rounded-lg border border-gray-300" data-en-placeholder="Enter your Telegram username" data-ar-placeholder="أدخل اسم المستخدم الخاص بك في تيليجرام">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-en="Save" data-ar="حفظ">
               Save
             </button>
           </div>
@@ -410,10 +426,17 @@
         <!-- Language Selection -->
         <div class="p-4 bg-gray-50 rounded-xl">
           <h3 class="font-medium text-gray-700 mb-3">Language</h3>
-          <select class="w-full p-2 rounded-lg border border-gray-300">
+          <select id="languageSelect" class="w-full p-2 rounded-lg border border-gray-300">
             <option value="en">English</option>
             <option value="ar">العربية</option>
           </select>
+        </div>
+
+        <!-- Save Changes Button -->
+        <div class="mt-6">
+          <button id="saveSettings" class="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors font-semibold">
+            Save Changes
+          </button>
         </div>
       </div>
     </div>
@@ -438,35 +461,31 @@
     }
 
     // Profile menu functionality
-    //const profileBtn = document.getElementById('profileBtn');
-    //const profileMenu = document.getElementById('profileMenu');
+    const profileBtn = document.getElementById('profileBtn');
+    const profileMenu = document.getElementById('profileMenu');
+  
+    profileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profileMenu.classList.toggle('hidden');
+      
+      // Update menu position based on language
+      const currentLanguage = localStorage.getItem('language') || 'en';
+      if (currentLanguage === 'ar') {
+        profileMenu.style.left = '0';
+        profileMenu.style.right = 'auto';
+      } else {
+        profileMenu.style.left = 'auto';
+        profileMenu.style.right = '0';
+      }
+    });
 
-    //profileBtn.addEventListener('click', (e) => {
-     // e.stopPropagation();
-     // profileMenu.classList.toggle('hidden');
-    //});
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#profileBtn') && !e.target.closest('#profileMenu')) {
+        profileMenu.classList.add('hidden');
+      }
+    });
 
-    //document.addEventListener('click', (e) => {
-     // if (!e.target.closest('#profileBtn')) {
-      //  profileMenu.classList.add('hidden');
-     // }
-    //});
-  // Profile menu functionality
-  const profileBtn = document.getElementById('profileBtn');
-  const profileMenu = document.getElementById('profileMenu');
-
-  // فتح القائمة عند الضغط على زر الملف الشخصي
-  profileBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    profileMenu.classList.toggle('hidden');
-  });
-
-  // إغلاق القائمة عند النقر خارجها
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('#profileBtn') && !e.target.closest('#profileMenu')) {
-      profileMenu.classList.add('hidden');
-    }
-  });
     // Close submenus when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.menu-item')) {
@@ -478,6 +497,7 @@
         });
       }
     });
+
     // 🔹 إظهار النافذة المنبثقة عند الضغط على زر "Profile"
     const profileModal = document.getElementById("profileModal");
     const profileButton = document.getElementById("profile");
@@ -511,23 +531,22 @@
       }
     });
 
-    <!-- كود JavaScript لتبديل ظهور الشريط الجانبي -->
+    // كود JavaScript لتبديل ظهور الشريط الجانبي -->
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-  const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
-  const sidebarOverlay = document.getElementById("sidebarOverlay");
+    // عند النقر على زر الهمبرغر، نقوم بإظهار الشريط الجانبي والـ Overlay
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+      sidebarOverlay.classList.toggle("hidden");
+    });
 
-  // عند النقر على زر الهمبرغر، نقوم بإظهار الشريط الجانبي والـ Overlay
-  hamburger.addEventListener("click", () => {
-    sidebar.classList.toggle("-translate-x-full");
-    sidebarOverlay.classList.toggle("hidden");
-  });
-
-  // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
-  sidebarOverlay.addEventListener("click", () => {
-    sidebar.classList.add("-translate-x-full");
-    sidebarOverlay.classList.add("hidden");
-  });
+    // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
+    sidebarOverlay.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      sidebarOverlay.classList.add("hidden");
+    });
 
     // Settings Modal Functionality
     const settingsModal = document.getElementById("settingsModal");
@@ -562,6 +581,92 @@
         }
       });
     });
+
+    // Language Change Functionality
+    const languageSelect = document.getElementById('languageSelect');
+    const htmlElement = document.documentElement;
+    const saveSettingsBtn = document.getElementById('saveSettings');
+    const sidebarElement = document.getElementById('sidebar');
+    const mainContent = document.querySelector('main');
+    
+    // Load saved language preference
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    languageSelect.value = savedLanguage;
+    htmlElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+    htmlElement.lang = savedLanguage;
+    
+    // Set initial sidebar position
+    if (savedLanguage === 'ar') {
+      sidebarElement.style.left = 'auto';
+      sidebarElement.style.right = '0';
+      mainContent.classList.remove('sm:ml-64');
+      mainContent.classList.add('sm:mr-64');
+    }
+    
+    updatePageLanguage(savedLanguage);
+
+    // Save settings functionality
+    saveSettingsBtn.addEventListener('click', () => {
+      const newLanguage = languageSelect.value;
+      localStorage.setItem('language', newLanguage);
+      htmlElement.dir = newLanguage === 'ar' ? 'rtl' : 'ltr';
+      htmlElement.lang = newLanguage;
+      
+      // Update sidebar position
+      if (newLanguage === 'ar') {
+        sidebarElement.style.left = 'auto';
+        sidebarElement.style.right = '0';
+        mainContent.classList.remove('sm:ml-64');
+        mainContent.classList.add('sm:mr-64');
+      } else {
+        sidebarElement.style.left = '0';
+        sidebarElement.style.right = 'auto';
+        mainContent.classList.remove('sm:mr-64');
+        mainContent.classList.add('sm:ml-64');
+      }
+
+      // Show success message
+      const successMessage = document.createElement('div');
+      successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      successMessage.textContent = newLanguage === 'ar' ? 'تم حفظ التغييرات بنجاح' : 'Changes saved successfully';
+      document.body.appendChild(successMessage);
+      
+      // Remove success message after 3 seconds
+      setTimeout(() => {
+        successMessage.remove();
+      }, 3000);
+
+      // Close settings modal
+      settingsModal.classList.add('hidden');
+    });
+
+    function updatePageLanguage(language) {
+      // Update all elements with data-en and data-ar attributes
+      document.querySelectorAll('[data-en]').forEach(element => {
+        const newText = element.getAttribute(`data-${language}`);
+        if (newText) {
+          element.textContent = newText;
+        }
+      });
+
+      // Update all elements with data-en-placeholder and data-ar-placeholder attributes
+      document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+        const newPlaceholder = element.getAttribute(`data-${language}-placeholder`);
+        if (newPlaceholder) {
+          element.placeholder = newPlaceholder;
+        }
+      });
+
+      // Update body direction
+      document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
+
+      // Update font family for Arabic
+      if (language === 'ar') {
+        document.body.style.fontFamily = "'Cairo', sans-serif";
+      } else {
+        document.body.style.fontFamily = "'Inter', sans-serif";
+      }
+    }
   </script>
 </body>
 </html>
