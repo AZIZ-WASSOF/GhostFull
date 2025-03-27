@@ -60,6 +60,11 @@
       }
       #sidebar {
         z-index: 70;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      #sidebar.active {
+        transform: translateX(0);
       }
       #sidebarOverlay {
         z-index: 65;
@@ -67,6 +72,12 @@
       .main-content {
         margin-left: 0 !important;
         margin-right: 0 !important;
+      }
+      [dir="rtl"] #sidebar {
+        transform: translateX(100%);
+      }
+      [dir="rtl"] #sidebar.active {
+        transform: translateX(0);
       }
     }
   </style>
@@ -418,12 +429,12 @@
     const sidebarOverlay = document.getElementById("sidebarOverlay");
   
     hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("-translate-x-full");
+      sidebar.classList.toggle("active");
       sidebarOverlay.classList.toggle("hidden");
     });
   
     sidebarOverlay.addEventListener("click", () => {
-      sidebar.classList.add("-translate-x-full");
+      sidebar.classList.remove("active");
       sidebarOverlay.classList.add("hidden");
     });
 
@@ -480,6 +491,11 @@
       sidebarElement.style.right = '0';
       mainContent.classList.remove('sm:ml-64');
       mainContent.classList.add('sm:mr-64');
+    } else {
+      sidebarElement.style.left = '0';
+      sidebarElement.style.right = 'auto';
+      mainContent.classList.remove('sm:mr-64');
+      mainContent.classList.add('sm:ml-64');
     }
     
     updatePageLanguage(savedLanguage);
