@@ -571,13 +571,11 @@
 
     hamburger.addEventListener("click", () => {
       sidebar.classList.toggle("active");
-      sidebar.classList.toggle("-translate-x-full");
       sidebarOverlay.classList.toggle("hidden");
     });
 
-    // إغلاق الشريط الجانبي عند النقر خارج منطقة الشريط (على الـ Overlay)
     sidebarOverlay.addEventListener("click", () => {
-      sidebar.classList.add("-translate-x-full");
+      sidebar.classList.remove("active");
       sidebarOverlay.classList.add("hidden");
     });
 
