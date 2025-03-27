@@ -12,6 +12,26 @@
     .invalid { color: #ef4444; }
     .match-border { border: 2px solid #22c55e; }
     .mismatch-border { border: 2px solid #ef4444; }
+    /* Mobile Responsive Fixes */
+    @media (max-width: 640px) {
+      .containerr {
+        width: 90% !important;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      body {
+        padding: 1rem;
+      }
+      .text-3xl {
+        font-size: 1.5rem;
+      }
+      input {
+        height: 2.5rem;
+      }
+      button {
+        height: 2.5rem;
+      }
+    }
   </style>
 </head>
 <body class="h-screen w-screen flex justify-center items-center overflow-hidden bg-[url(images/background.png)] bg-center bg-cover">
