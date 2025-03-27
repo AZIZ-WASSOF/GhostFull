@@ -51,11 +51,11 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
-      <h1 class="text-2xl font-bold tracking-tight">USDT Payment</h1>
+      <h1 class="text-2xl font-bold tracking-tight" data-en="USDT Payment" data-ar="دفع USDT">USDT Payment</h1>
     </div>
     <div class="flex items-center space-x-6">
       <div class="hidden lg:block bg-white/10 px-6 py-2 rounded-full backdrop-blur-sm">
-        <span class="font-medium">Balance: $0.00</span>
+        <span class="font-medium" data-en="Balance: $0.00" data-ar="الرصيد: $0.00">Balance: $0.00</span>
       </div>
       <div class="relative">
         <button id="profileBtn" class="flex items-center space-x-2 group">
@@ -65,18 +65,18 @@
           </div>
         </button>
         <div id="profileMenu" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-2xl py-3 text-gray-800 hidden origin-top-right">
-          <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all w-full">
+          <button id="profile" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all">
             <i class="fi fi-ss-user-pen mr-5 text-blue-500"></i>
-            <span class="font-medium">Profile</span>
+            <span class="font-medium" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
           </button>
           <a href="#" class="flex items-center px-5 py-3 hover:bg-gray-50/90 transition-all">
             <i class="fi fi-ss-settings mr-5 text-blue-500"></i>
-            <span class="font-medium">Settings</span>
+            <span class="font-medium" data-en="Settings" data-ar="الإعدادات">Settings</span>
           </a>
           <div class="border-t my-2"></div>
           <a href="login.html" class="flex items-center px-5 py-3 hover:bg-gray-50/90 text-red-500 transition-all">
             <i class="fi fi-ss-address-card mr-5 text-red-500"></i>
-            <span class="font-medium">Log out</span>
+            <span class="font-medium" data-en="Log out" data-ar="تسجيل الخروج">Log out</span>
           </a>
         </div>
       </div>
@@ -91,16 +91,16 @@
       </button>
       <img src="images/profile_photo.png" alt="" class="rounded-full w-48 h-48 mx-auto shadow-lg border-4 border-blue-500 mb-6">
       <div class="text-center space-y-8">
-        <h2 class="text-2xl font-bold text-gray-800">User Profile</h2>
-        <p class="text-gray-700 mt-3 text-lg"><strong>Email:</strong> <span id="useremail">example@example.com</span></p>
-        <p class="text-gray-700 mt-3 text-lg"><strong>Password:</strong> <span id="userpassword">********</span></p>
+        <h2 class="text-2xl font-bold text-gray-800" data-en="User Profile" data-ar="الملف الشخصي للمستخدم">User Profile</h2>
+        <p class="text-gray-700 mt-3 text-lg"><strong data-en="Email:" data-ar="البريد الإلكتروني:">Email:</strong> <span id="useremail">example@example.com</span></p>
+        <p class="text-gray-700 mt-3 text-lg"><strong data-en="Password:" data-ar="كلمة المرور:">Password:</strong> <span id="userpassword">********</span></p>
       </div>
     </div>
   </div>
 
   <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>      
   <!-- Sidebar -->
-  <aside id="sidebar" class="transform -translate-x-full sm:translate-x-0 transition-transform duration-300 fixed top-20 left-0 h-[calc(100vh-80px)] w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white shadow-2xl p-5 z-50">  
+  <aside id="sidebar" class="transform -translate-x-full sm:translate-x-0 transition-transform duration-300 fixed top-20 h-[calc(100vh-80px)] w-64 bg-gradient-to-b from-blue-600 to-blue-500 text-white shadow-2xl p-5 z-50" style="left: 0;">  
     <nav>
       <ul class="space-y-2">
         <!-- Proxy menu -->
@@ -108,19 +108,19 @@
           <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
             <div class="flex items-center space-x-5">
               <i class="fi fi-rr-shield-check text-xl"></i>
-              <span class="font-medium">Proxy</span>
+              <span class="font-medium" data-en="Proxy" data-ar="البروكسي">Proxy</span>
             </div>
             <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
           </button>
           <ul class="submenu pl-9">
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Static Residential
+                <span class="font-medium" data-en="Static Residential" data-ar="سكني ثابت">Static Residential</span>
               </a>
             </li>
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Modem Rotation
+                <span class="font-medium" data-en="Modem Rotation" data-ar="تدوير المودم">Modem Rotation</span>
               </a>
             </li>
           </ul>
@@ -131,14 +131,14 @@
           <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
             <div class="flex items-center space-x-5">
               <i class="fi fi-tr-vpn-globe text-xl"></i>
-              <span class="font-medium">VPN</span>
+              <span class="font-medium" data-en="VPN" data-ar="الشبكة الافتراضية">VPN</span>
             </div>
             <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
           </button>
           <ul class="submenu pl-9">
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Mysterium VPN
+                <span class="font-medium" data-en="Mysterium VPN" data-ar="مستروم VPN">Mysterium VPN</span>
               </a>
             </li>
           </ul>
@@ -149,19 +149,19 @@
           <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
             <div class="flex items-center space-x-5">
               <i class="fi fi-rr-phone-call text-xl"></i>
-              <span class="font-medium">Temp Number</span>
+              <span class="font-medium" data-en="Temp Number" data-ar="رقم مؤقت">Temp Number</span>
             </div>
             <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
           </button>
           <ul class="submenu pl-9">
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Numbers for 5 min
+                <span class="font-medium" data-en="Numbers for 5 min" data-ar="أرقام لمدة 5 دقائق">Numbers for 5 min</span>
               </a>
             </li>
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Numbers for 15 min
+                <span class="font-medium" data-en="Numbers for 15 min" data-ar="أرقام لمدة 15 دقيقة">Numbers for 15 min</span>
               </a>
             </li>
           </ul>
@@ -172,24 +172,24 @@
           <button class="w-full flex justify-between items-center p-3.5 hover:bg-white/10 rounded-xl transition-all" onclick="toggleSubmenu(this)">
             <div class="flex items-center space-x-5">
               <i class="fi fi-rr-envelope text-xl"></i>
-              <span class="font-medium">Ready Accounts</span>
+              <span class="font-medium" data-en="Ready Accounts" data-ar="حسابات جاهزة">Ready Accounts</span>
             </div>
             <i class="fi fi-ss-angle-small-down menu-arrow text-base"></i>
           </button>
           <ul class="submenu pl-9">
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Gmail
+                <span class="font-medium" data-en="Gmail" data-ar="جيميل">Gmail</span>
               </a>
             </li>
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Outlook
+                <span class="font-medium" data-en="Outlook" data-ar="أوتلوك">Outlook</span>
               </a>
             </li>
             <li>
               <a href="#" class="block p-2.5 hover:bg-white/5 rounded-lg transition-all">
-                Hotmail
+                <span class="font-medium" data-en="Hotmail" data-ar="هوت ميل">Hotmail</span>
               </a>
             </li>
           </ul>
@@ -199,13 +199,13 @@
         <li>
           <a href="#" class="flex items-center space-x-5 p-3.5 hover:bg-white/10 rounded-xl transition-all">
             <i class="fi fi-ss-chart-histogram text-xl"></i>
-            <span class="font-medium">Analytics</span>
+            <span class="font-medium" data-en="Analytics" data-ar="التحليلات">Analytics</span>
           </a>
         </li>
         <li>
           <a href="#" class="flex items-center space-x-5 p-3.5 hover:bg-white/10 rounded-xl transition-all">
             <i class="fi fi-rr-box text-xl"></i>
-            <span class="font-medium">Orders</span>
+            <span class="font-medium" data-en="Orders" data-ar="الطلبات">Orders</span>
           </a>
         </li>
       </ul>
@@ -214,12 +214,12 @@
 
   <main class="flex-grow p-8 ml-0 sm:ml-64 pt-24">
     <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">USDT Payment Instructions</h2>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-en="USDT Payment Instructions" data-ar="تعليمات دفع USDT">USDT Payment Instructions</h2>
       
       <div class="space-y-6">
         <div class="bg-blue-50 p-4 rounded-xl">
-            <h3 class="text-lg font-semibold text-blue-800 mb-2">Step 1: Send Payment</h3>
-            <p class="text-gray-700">Please send your USDT payment to one of the following wallet addresses:</p>
+            <h3 class="text-lg font-semibold text-blue-800 mb-2" data-en="Step 1: Send Payment" data-ar="الخطوة 1: إرسال الدفع">Step 1: Send Payment</h3>
+            <p class="text-gray-700" data-en="Please send your payment to the following USDT wallet address (No fees):" data-ar="يرجى إرسال الدفع إلى عنوان محفظة USDT التالي (بدون رسوم):">Please send your payment to the following USDT wallet address (No fees):</p>
           
           <!-- TRC20 Option -->
           <div class="mt-4">
@@ -238,34 +238,32 @@
           </div>
 
           <div class="mt-4 text-sm text-gray-600">
-            <p>Minimum amount: 1 USDT</p>
-            <p class="text-red-500 mt-1">Please make sure to select the correct network before sending!</p>
+            <p data-en="Minimum amount: 1 USDT" data-ar="الحد الأدنى للمبلغ: 1 USDT">Minimum amount: 1 USDT</p>
+            <p class="text-red-500 mt-1" data-en="Please make sure to select the correct network before sending!" data-ar="يرجى التأكد من اختيار الشبكة الصحيحة قبل الإرسال!">Please make sure to select the correct network before sending!</p>
           </div>
         </div>
 
         <div class="bg-blue-50 p-4 rounded-xl">
-          <h3 class="text-lg font-semibold text-blue-800 mb-2">Step 2: Upload Payment Proof</h3>
-          <p class="text-gray-700 mb-4">After sending the payment, please upload a screenshot of your payment transaction:</p>
+          <h3 class="text-lg font-semibold text-blue-800 mb-2" data-en="Step 2: Upload Payment Proof" data-ar="الخطوة 2: رفع إثبات الدفع">Step 2: Upload Payment Proof</h3>
+          <p class="text-gray-700 mb-4" data-en="After sending the payment, please upload a screenshot of your payment transaction:" data-ar="بعد إرسال الدفع، يرجى رفع لقطة شاشة لمعاملة الدفع الخاصة بك:">After sending the payment, please upload a screenshot of your payment transaction:</p>
           <div class="border-2 border-dashed border-blue-300 rounded-lg p-8 text-center">
             <input type="file" id="paymentProof" class="hidden" accept="image/*">
             <label for="paymentProof" class="cursor-pointer">
               <i class="fi fi-rr-upload text-4xl text-blue-500 mb-2"></i>
-              <p class="text-gray-600">Click to upload payment proof</p>
-              <p class="text-sm text-gray-500 mt-1">Supported formats: JPG, PNG</p>
+              <p class="text-gray-600" data-en="Click to upload payment proof" data-ar="انقر لرفع إثبات الدفع">Click to upload payment proof</p>
+              <p class="text-sm text-gray-500 mt-1" data-en="Supported formats: JPG, PNG" data-ar="التنسيقات المدعومة: JPG, PNG">Supported formats: JPG, PNG</p>
             </label>
           </div>
         </div>
 
         <div class="bg-blue-50 p-4 rounded-xl">
-          <h3 class="text-lg font-semibold text-blue-800 mb-2">Step 3: Submit</h3>
-          <p class="text-gray-700 mb-4">Once you've uploaded the proof, click the submit button below:</p>
-          <button class="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors font-semibold">
-            Submit Payment Proof
-          </button>
+          <h3 class="text-lg font-semibold text-blue-800 mb-2" data-en="Step 3: Submit" data-ar="الخطوة 3: إرسال">Step 3: Submit</h3>
+          <p class="text-gray-700 mb-4" data-en="Once you've uploaded the proof, click the submit button below:" data-ar="بمجرد رفع الإثبات، انقر على زر الإرسال أدناه:">Once you've uploaded the proof, click the submit button below:</p>
+          <button class="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors font-semibold" data-en="Submit Payment Proof" data-ar="إرسال إثبات الدفع">Submit Payment Proof</button>
         </div>
 
         <div class="text-center text-sm text-gray-500">
-          <p>Note: Your balance will be updated within 24 hours after verification.</p>
+          <p data-en="Note: Your balance will be updated within 24 hours after verification." data-ar="ملاحظة: سيتم تحديث رصيدك خلال 24 ساعة بعد التحقق.">Note: Your balance will be updated within 24 hours after verification.</p>
         </div>
       </div>
     </div>
@@ -279,41 +277,42 @@
       </button>
       
       <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800">Settings</h2>
+        <h2 class="text-2xl font-bold text-gray-800" data-en="Settings" data-ar="الإعدادات">Settings</h2>
       </div>
 
       <div class="space-y-6">
         <!-- Change Password -->
         <div class="p-4 bg-gray-50 rounded-xl">
-          <h3 class="font-medium text-gray-700 mb-3">Change Password</h3>
+          <h3 class="font-medium text-gray-700 mb-3" data-en="Change Password" data-ar="تغيير كلمة المرور">Change Password</h3>
           <div class="space-y-3">
-            <input type="password" placeholder="Current Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <input type="password" placeholder="New Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <input type="password" placeholder="Confirm New Password" class="w-full p-2 rounded-lg border border-gray-300">
-            <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Update Password
-            </button>
+            <input type="password" placeholder="Current Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="Current Password" data-ar-placeholder="كلمة المرور الحالية">
+            <input type="password" placeholder="New Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="New Password" data-ar-placeholder="كلمة المرور الجديدة">
+            <input type="password" placeholder="Confirm New Password" class="w-full p-2 rounded-lg border border-gray-300" data-en-placeholder="Confirm New Password" data-ar-placeholder="تأكيد كلمة المرور الجديدة">
+            <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors" data-en="Update Password" data-ar="تحديث كلمة المرور">Update Password</button>
           </div>
         </div>
 
         <!-- Telegram Username -->
         <div class="p-4 bg-gray-50 rounded-xl">
-          <h3 class="font-medium text-gray-700 mb-3">Telegram Username</h3>
+          <h3 class="font-medium text-gray-700 mb-3" data-en="Telegram Username" data-ar="اسم المستخدم في تيليجرام">Telegram Username</h3>
           <div class="flex space-x-3">
-            <input type="text" placeholder="Enter your Telegram username" class="flex-1 p-2 rounded-lg border border-gray-300">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-              Save
-            </button>
+            <input type="text" placeholder="Enter your Telegram username" class="flex-1 p-2 rounded-lg border border-gray-300" data-en-placeholder="Enter your Telegram username" data-ar-placeholder="أدخل اسم المستخدم الخاص بك في تيليجرام">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors" data-en="Save" data-ar="حفظ">Save</button>
           </div>
         </div>
 
         <!-- Language Selection -->
         <div class="p-4 bg-gray-50 rounded-xl">
-          <h3 class="font-medium text-gray-700 mb-3">Language</h3>
-          <select class="w-full p-2 rounded-lg border border-gray-300">
+          <h3 class="font-medium text-gray-700 mb-3" data-en="Language" data-ar="اللغة">Language</h3>
+          <select id="languageSelect" class="w-full p-2 rounded-lg border border-gray-300">
             <option value="en">English</option>
             <option value="ar">العربية</option>
           </select>
+        </div>
+
+        <!-- Save Changes Button -->
+        <div class="mt-6">
+          <button id="saveSettings" class="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors font-semibold" data-en="Save Changes" data-ar="حفظ التغييرات">Save Changes</button>
         </div>
       </div>
     </div>
@@ -343,6 +342,16 @@
     profileBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       profileMenu.classList.toggle('hidden');
+      
+      // Update menu position based on language
+      const currentLanguage = localStorage.getItem('language') || 'en';
+      if (currentLanguage === 'ar') {
+        profileMenu.style.left = '0';
+        profileMenu.style.right = 'auto';
+      } else {
+        profileMenu.style.left = 'auto';
+        profileMenu.style.right = '0';
+      }
     });
   
     document.addEventListener('click', (e) => {
@@ -422,6 +431,93 @@
         }
       });
     });
+
+    // Language Change Functionality
+    const languageSelect = document.getElementById('languageSelect');
+    const htmlElement = document.documentElement;
+    const saveSettingsBtn = document.getElementById('saveSettings');
+    const sidebarElement = document.getElementById('sidebar');
+    const mainContent = document.querySelector('main');
+    
+    // Load saved language preference
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    languageSelect.value = savedLanguage;
+    htmlElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+    htmlElement.lang = savedLanguage;
+    
+    // Set initial sidebar position
+    if (savedLanguage === 'ar') {
+      sidebarElement.style.left = 'auto';
+      sidebarElement.style.right = '0';
+      mainContent.classList.remove('sm:ml-64');
+      mainContent.classList.add('sm:mr-64');
+    }
+    
+    updatePageLanguage(savedLanguage);
+
+    // Save settings functionality
+    saveSettingsBtn.addEventListener('click', () => {
+      const newLanguage = languageSelect.value;
+      localStorage.setItem('language', newLanguage);
+      htmlElement.dir = newLanguage === 'ar' ? 'rtl' : 'ltr';
+      htmlElement.lang = newLanguage;
+      
+      // Update sidebar position
+      if (newLanguage === 'ar') {
+        sidebarElement.style.left = 'auto';
+        sidebarElement.style.right = '0';
+        mainContent.classList.remove('sm:ml-64');
+        mainContent.classList.add('sm:mr-64');
+      } else {
+        sidebarElement.style.left = '0';
+        sidebarElement.style.right = 'auto';
+        mainContent.classList.remove('sm:mr-64');
+        mainContent.classList.add('sm:ml-64');
+      }
+
+      // Show success message
+      const successMessage = document.createElement('div');
+      successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      successMessage.textContent = newLanguage === 'ar' ? 'تم حفظ التغييرات بنجاح' : 'Changes saved successfully';
+      document.body.appendChild(successMessage);
+      
+      // Remove success message after 3 seconds
+      setTimeout(() => {
+        successMessage.remove();
+      }, 3000);
+
+      // Close settings modal
+      settingsModal.classList.add('hidden');
+    });
+
+    // Add updatePageLanguage function
+    function updatePageLanguage(language) {
+      // Update all elements with data-en and data-ar attributes
+      document.querySelectorAll('[data-en]').forEach(element => {
+        const newText = element.getAttribute(`data-${language}`);
+        if (newText) {
+          element.textContent = newText;
+        }
+      });
+
+      // Update all elements with data-en-placeholder and data-ar-placeholder attributes
+      document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+        const newPlaceholder = element.getAttribute(`data-${language}-placeholder`);
+        if (newPlaceholder) {
+          element.placeholder = newPlaceholder;
+        }
+      });
+
+      // Update body direction
+      document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
+
+      // Update font family for Arabic
+      if (language === 'ar') {
+        document.body.style.fontFamily = "'Cairo', sans-serif";
+      } else {
+        document.body.style.fontFamily = "'Inter', sans-serif";
+      }
+    }
   </script>
 </body>
 </html> 
